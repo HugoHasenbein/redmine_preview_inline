@@ -30,8 +30,8 @@ Plugin for Redmine. Show attachments inline
 
 ### Use
 
-* Go to Administration->Plugins->Redmine Preview Inline and choose embed method (if browser compatibilty issues occur) and preview size
-* On Issue show page click on the magnifying glass next to an attachment linkand view its contents inline
+* Go to Administration->Plugins->Redmine Preview Inline and choose preview size fulwidth for issus and/or absolute size
+* On Issue show page click on the magnifying glass next to an attachment link and view its contents inline
 
 **Have fun!**
 
