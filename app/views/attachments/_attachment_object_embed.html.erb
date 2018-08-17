@@ -1,0 +1,9 @@
+<script type="text/javascript">  
+  function resizeObject(obj) {
+	obj.style.height = obj.scrollHeight + 'px';
+	console.log(obj.scrollHeight + 'px');
+  }
+</script>
+<object data="<%= named_attachment_url(@attachment, @attachment.filename, :view_inline => 'true') %>" id='<%= @new_tag_id %>' style="width: 100%; height: 16px;" seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true" onload="resizeObject(this);" type="text/html" title="<%= @attachment.filename %>">
+  <embed href="<%= named_attachment_url(@attachment, @attachment.filename, :view_inline => 'true') %>" type="text/html" onload="resizeObject(this);>
+</object>	

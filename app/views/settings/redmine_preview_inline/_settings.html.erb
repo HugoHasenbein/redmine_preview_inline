@@ -1,0 +1,11 @@
+<fieldset class="box tabular settings"><legend><%= l(:text_preview_inline_size_setting) %></legend>
+  <p>
+	<label><%= l(:text_preview_inline_fullwidth)  %></label>
+	<%= check_box_tag 'settings[fullwidth]', '1', (settings['fullwidth'].to_i == 1) %>
+  </p>
+  <p>
+	<label><%= l(:text_preview_inline_size_setting)  %></label>
+	<%= text_field_tag 'settings[size]', settings["size"], :id => "preview_size_setting", :maxlength => 10, :placeholder => json_escape( settings["size"]) %>
+  </p>
+</fieldset>
+

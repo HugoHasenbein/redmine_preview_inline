@@ -1,0 +1,12 @@
+<table id="<%= preview_pane_id %>" style="display:none;" width="<%= width_param %>">
+  <tbody>
+	<tr>
+	  <td class="box" style="text-align:left;">
+		<span class="icon icon-close" onclick="<%= "$('##{preview_pane_id}').hide(); $('##{preview_tag_id}').html('');".html_safe %>"></span>
+		<br>
+		<div id="<%= preview_tag_id %>" style="width:100%;"></div>
+	  </td>
+	</tr>
+  </tbody>
+</table>
+

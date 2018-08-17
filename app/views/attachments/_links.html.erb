@@ -1,0 +1,65 @@
+<div class="attachments">
+<div class="contextual">
+  <%= link_to(l(:label_edit_attachments),
+              container_attachments_edit_path(container),
+              :title => l(:label_edit_attachments),
+              :class => 'icon-only icon-edit'
+             ) if options[:editable] %>
+</div>
+<table style="width:100%;">
+<% for attachment in attachments %>
+<% preview_row_id    = SecureRandom.uuid.to_s.gsub(/\-/, "_") %>
+<% preview_tag_id    = SecureRandom.uuid.to_s.gsub(/\-/, "_") %>
+<tr>
+  <td>
+    <%= link_to_attachment attachment, class: 'icon icon-attachment' -%>
+    <span class="icon icon-magnifier" onclick="<%= "$.ajax({url:'#{view_attachment_inline_path(attachment.id, preview_tag_id)}', type: 'post'}); $('##{preview_row_id}').toggle();".html_safe %>">
+    <span class="size">(<%= number_to_human_size attachment.filesize %>)</span>
+    <%= link_to_attachment attachment, class: 'icon-only icon-download', title: l(:button_download), download: true -%>
+  </td>
+  <td><%= attachment.description unless attachment.description.blank? %></td>
+  <td>
+    <% if options[:author] %>
+      <span class="author"><%= attachment.author %>, <%= format_time(attachment.created_on) %></span>
+    <% end %>
+  </td>
+  <td>
+    <% if options[:deletable] %>
+      <%= link_to l(:button_delete), attachment_path(attachment),
+                  :data => {:confirm => l(:text_are_you_sure)},
+                  :method => :delete,
+                  :class => 'delete icon-only icon-del',
+                  :title => l(:button_delete) %>
+    <% end %>
+  </td>
+  <td></td>
+</tr>
+<tr id="<%= preview_row_id %>" style="display:none;">
+  <td colspan="5">
+	<div class="box">
+	  <span class="icon icon-close" onclick="<%= "$('##{preview_row_id}').hide(); $('##{preview_tag_id}').html('');".html_safe %>"></span>
+	  <div id="<%= preview_tag_id %>">
+	  </div>
+	</div>
+  </td>
+</tr>
+<% end %>
+</table>
+<% if defined?(thumbnails) && thumbnails %>
+  <% images = attachments.select(&:thumbnailable?) %>
+  <% if images.any? %>
+  <div class="thumbnails">
+    <% images.each do |attachment| %>
+	  <% preview_pane_id   = SecureRandom.uuid.to_s.gsub(/\-/, "_") %>
+	  <% preview_tag_id    = SecureRandom.uuid.to_s.gsub(/\-/, "_") %>
+      <%- if Setting['plugin_redmine_preview_inline']['fullwidth'].to_i == 1 %>
+		  <div><%= thumbnail_tag(attachment, :no_inner_view_pane => true, :preview_pane_id => preview_pane_id, :preview_tag_id => preview_tag_id) %></div>
+		  <%= render :partial => 'attachments/thumbnail_inline_view_pane', :locals => {:attachment => attachment, :preview_tag_id => preview_tag_id, :preview_pane_id => preview_pane_id, :width_param => "100%" } %>
+      <%- else %>
+        <div><%= thumbnail_tag(attachment) %></div>
+      <%- end %>
+    <% end %>
+  </div>
+  <% end %>
+<% end %>
+</div>

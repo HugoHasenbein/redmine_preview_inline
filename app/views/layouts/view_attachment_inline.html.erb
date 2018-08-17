@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="<%= current_language %>">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<title><%= html_title %></title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="description" content="<%= Redmine::Info.app_name %>" />
+<meta name="keywords" content="issue,bug,tracker" />
+<%= csrf_meta_tag %>
+<%= favicon %>
+<%= stylesheet_link_tag 'jquery/jquery-ui-1.11.0', 'application', 'responsive', :media => 'all' %>
+<%= stylesheet_link_tag 'rtl', :media => 'all' if l(:direction) == 'rtl' %>
+<%= heads_for_theme %>
+<%= call_hook :view_layouts_base_html_head %>
+<!-- page specific tags -->
+<%= yield :header_tags -%>
+</head>
+<body class="<%= body_css_classes %>">
+  <%= call_hook :view_layouts_base_body_top %>
+  <div id="wrapper">
+    <div id="wrapper2">
+      <div id="wrapper3">
+        <div id="nosidebar">
+            <%= render_flash_messages %>
+            <%= yield %>
+            <%= call_hook :view_layouts_base_content %>
+            <div style="clear:both;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= call_hook :view_layouts_base_body_bottom %>
+</body>
+</html>
