@@ -2,6 +2,8 @@
 
 Plugin for Redmine. Show attachments inline 
 
+![Animated GIF that represents a quick overview](/doc/Overview.gif)
+
 ### Use case(s)
 
 * View contents of an attachment file inline
