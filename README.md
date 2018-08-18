@@ -10,17 +10,15 @@ Plugin for Redmine. Show attachments inline
 
 ### Install
 
-1. go to plugins folder
+1. download plugin and copy plugin folder redmine_preview_inline go to Redmine's plugins folder 
 
-`git clone https://github.com/HugoHasenbein/redmine_preview_inline.git`
-
-3. restart server f.i.  
+2. restart server f.i.  
 
 `sudo /etc/init.d/apache2 restart`
 
 ### Uninstall
 
-1. go to plugins folder
+1. go to plugins folder, delete plugin folder redmine_preview_inline
 
 `rm -r redmine_preview_inline`
 
@@ -37,7 +35,8 @@ Plugin for Redmine. Show attachments inline
 
 ### Localisations
 
-
+* 1.0.2
+  - no change
 * 1.0.1 
   - English
   - German
