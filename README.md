@@ -37,9 +37,10 @@ Plugin for Redmine. Show attachments inline
 
 
 * 1.0.1 
-- English
-- German
-* 1.0.0 - no localizable strings present in plugin
+  - English
+  - German
+* 1.0.0 
+  - no localizable strings present in plugin
 
 ### Change-Log* 
 
