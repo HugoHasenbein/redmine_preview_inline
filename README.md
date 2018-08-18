@@ -29,7 +29,7 @@ Plugin for Redmine. Show attachments inline
 ### Use
 
 * Go to Administration->Plugins->Redmine Preview Inline and choose embed method (if browser compatibilty issues occur) and preview size
-* On Issue show page click on the magnifying glass next to an attachment linkand view its contents inline
+* On Issue show page click on the magnifying glass next to an attachment link and view its contents inline
 
 **Have fun!**
 
@@ -44,5 +44,7 @@ Plugin for Redmine. Show attachments inline
 ### Change-Log* 
 
 **1.0.2** added support for full-width inline view for thumbnail links 
+
 **1.0.1** added inline view link for thumbnail links  
+
 **1.0.0** running on Redmine 3.4.6
