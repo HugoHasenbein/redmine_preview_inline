@@ -22,23 +22,24 @@
 module RedminePreviewInline
   module Patches 
     module ApplicationHelperPatch
-
+    
       def self.included(base)
         base.extend(ClassMethods)
         base.send(:include, InstanceMethods)
         base.class_eval do
-
+        
           unloadable 
-          alias_method_chain :thumbnail_tag, :inline_view
+          alias_method :thumbnail_tag_without_inline_view, :thumbnail_tag
+          alias_method :thumbnail_tag,    :thumbnail_tag_with_inline_view
           
           def attachment_inline_view_tag(content, attachment)
           
            preview_pane_id   = SecureRandom.uuid.to_s.gsub(/\-/, "_") 
            preview_tag_id    = SecureRandom.uuid.to_s.gsub(/\-/, "_") 
-
-		   # load selector (magnifying glass icon with all parameters)
-		   erb = ERB.new(File.read(File.join(__dir__, '..', '..', '..', 'app', 'views', 'attachments', '_thumbnail_inline_view_selector.html.erb')))
-		   selector_html = erb.result(binding)
+           
+           # load selector (magnifying glass icon with all parameters)
+           erb = ERB.new(File.read(File.join(__dir__, '..', '..', '..', 'app', 'views', 'attachments', '_thumbnail_inline_view_selector.html.erb')))
+           selector_html = erb.result(binding)
            
            width_param = json_escape(Setting['plugin_redmine_preview_inline']['size']).presence || "300"
            
@@ -48,11 +49,11 @@ module RedminePreviewInline
            
            # add all together
            content + selector_html.html_safe + view_pane_html.html_safe
-
+           
           end #def
-
+          
         end #base
-
+        
       end #self
 
 

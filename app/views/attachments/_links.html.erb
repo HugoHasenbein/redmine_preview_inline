@@ -36,11 +36,11 @@
 </tr>
 <tr id="<%= preview_row_id %>" style="display:none;">
   <td colspan="5">
-	<div class="box">
-	  <span class="icon icon-close" onclick="<%= "$('##{preview_row_id}').hide(); $('##{preview_tag_id}').html('');".html_safe %>"></span>
-	  <div id="<%= preview_tag_id %>">
-	  </div>
-	</div>
+    <div class="box">
+      <span class="icon icon-close" onclick="<%= "$('##{preview_row_id}').hide(); $('##{preview_tag_id}').html('');".html_safe %>"></span>
+      <div id="<%= preview_tag_id %>">
+      </div>
+    </div>
   </td>
 </tr>
 <% end %>
@@ -50,11 +50,11 @@
   <% if images.any? %>
   <div class="thumbnails">
     <% images.each do |attachment| %>
-	  <% preview_pane_id   = SecureRandom.uuid.to_s.gsub(/\-/, "_") %>
-	  <% preview_tag_id    = SecureRandom.uuid.to_s.gsub(/\-/, "_") %>
+      <% preview_pane_id   = SecureRandom.uuid.to_s.gsub(/\-/, "_") %>
+      <% preview_tag_id    = SecureRandom.uuid.to_s.gsub(/\-/, "_") %>
       <%- if Setting['plugin_redmine_preview_inline']['fullwidth'].to_i == 1 %>
-		  <div><%= thumbnail_tag(attachment, :no_inner_view_pane => true, :preview_pane_id => preview_pane_id, :preview_tag_id => preview_tag_id) %></div>
-		  <%= render :partial => 'attachments/thumbnail_inline_view_pane', :locals => {:attachment => attachment, :preview_tag_id => preview_tag_id, :preview_pane_id => preview_pane_id, :width_param => "100%" } %>
+          <div><%= thumbnail_tag(attachment, :no_inner_view_pane => true, :preview_pane_id => preview_pane_id, :preview_tag_id => preview_tag_id) %></div>
+          <%= render :partial => 'attachments/thumbnail_inline_view_pane', :locals => {:attachment => attachment, :preview_tag_id => preview_tag_id, :preview_pane_id => preview_pane_id, :width_param => "100%" } %>
       <%- else %>
         <div><%= thumbnail_tag(attachment) %></div>
       <%- end %>

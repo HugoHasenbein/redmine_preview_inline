@@ -18,6 +18,16 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
+#
+# 1.0.3
+#       running also on redmine 4+
+#       
+# 1.0.2
+#       running on redmine 3.4.11
+#       
+# 1.0.0
+#       running on redmine 3.4.11, never released
+#       
 
 require 'redmine'
 
@@ -25,15 +35,15 @@ Redmine::Plugin.register :redmine_preview_inline do
   name 'Redmine Preview Inline'
   author 'Stephan Wenzel'
   description 'This is a plugin for Redmine to preview an attachment inline'
-  version '1.0.2'
+  version '1.0.3'
   url 'https://github.com/HugoHasenbein/redmine_preview_inline'
   author_url 'https://github.com/HugoHasenbein/redmine_preview_inline'
-
+  
   settings :default => {'size'          => '300', # about 3 neighboring previews per page
-                        'fullwidth'		=> '1'    # use fullwidth preview under thumbnail
+                        'fullwidth'     => '1'    # use fullwidth preview under thumbnail
                        },
            :partial => 'settings/redmine_preview_inline/settings'
-
+           
 end
 
 require "redmine_preview_inline"
