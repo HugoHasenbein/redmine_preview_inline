@@ -19,6 +19,9 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 #
+# 1.0.4
+#       running also on redmine 5+
+#
 # 1.0.3
 #       running also on redmine 4+
 #       
@@ -35,7 +38,7 @@ Redmine::Plugin.register :redmine_preview_inline do
   name 'Redmine Preview Inline'
   author 'Stephan Wenzel'
   description 'This is a plugin for Redmine to preview an attachment inline'
-  version '1.0.3'
+  version '1.0.4'
   url 'https://github.com/HugoHasenbein/redmine_preview_inline'
   author_url 'https://github.com/HugoHasenbein/redmine_preview_inline'
   
@@ -46,4 +49,12 @@ Redmine::Plugin.register :redmine_preview_inline do
            
 end
 
-require "redmine_preview_inline"
+Rails.configuration.to_prepare do
+
+  # link patches
+  require File.expand_path('../lib/redmine_preview_inline/patches/issues_helper_patch', __FILE__)
+  require File.expand_path('../lib/redmine_preview_inline/patches/application_helper_patch', __FILE__)
+  require File.expand_path('../lib/redmine_preview_inline/patches/attachments_controller_patch', __FILE__)
+
+end
+
