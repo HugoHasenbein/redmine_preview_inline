@@ -45,6 +45,8 @@ Plugin for Redmine. Show attachments inline
 
 ### Change-Log* 
 
+**1.0.5** style adjustments
+
 **1.0.4** added support for Redmine 5+
 
 **1.0.2** added support for full-width inline view for thumbnail links 

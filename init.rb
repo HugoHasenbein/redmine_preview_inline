@@ -19,6 +19,9 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 #
+# 1.0.5
+#       style adjustments
+#
 # 1.0.4
 #       running also on redmine 5+
 #
@@ -38,7 +41,7 @@ Redmine::Plugin.register :redmine_preview_inline do
   name 'Redmine Preview Inline'
   author 'Stephan Wenzel'
   description 'This is a plugin for Redmine to preview an attachment inline'
-  version '1.0.4'
+  version '1.0.5'
   url 'https://github.com/HugoHasenbein/redmine_preview_inline'
   author_url 'https://github.com/HugoHasenbein/redmine_preview_inline'
   
