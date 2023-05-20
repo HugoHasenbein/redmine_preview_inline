@@ -13,7 +13,7 @@
 <tr>
   <td>
     <%= link_to_attachment attachment, class: 'icon icon-attachment' -%>
-    <span class="icon icon-magnifier" onclick="<%= "$.ajax({url:'#{view_attachment_inline_path(attachment.id, preview_tag_id)}', type: 'post'}); $('##{preview_row_id}').toggle();".html_safe %>">
+    <span class="icon icon-magnifier" onclick="<%= "$.ajax({url:'#{view_attachment_inline_path(attachment.id, preview_tag_id)}', type: 'post'}); $('##{preview_row_id}').toggle();".html_safe %>"</span>
     <span class="size">(<%= number_to_human_size attachment.filesize %>)</span>
     <%= link_to_attachment attachment, class: 'icon-only icon-download', title: l(:button_download), download: true -%>
   </td>
